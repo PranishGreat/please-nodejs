@@ -17,7 +17,7 @@ app.set("views", "./views");
 app.set("view engine", "ejs");
 
 // PORT 
-const port=Process.env.PORT || 3000;
+const port=process.env.PORT || 3000;
 
 app.listen(port, ()=>logger.log('info',`Server connected to ${port}`));
 //Mongo Connection section
