@@ -4,18 +4,15 @@ const express= require('express');
 const app=  express();
 const bodyParser=require('body-parser')
 const session = require('express-session');
-
-
+const { contains } = require("cheerio");
 
 //Middle wares
-app.use(bodyParser.json()); 
-var urlencodedParser = bodyParser.urlencoded({ extended: true })
-
 app.use(session({secret: 'ssshhhhh',saveUninitialized: true,resave: true}));
 app.use(express.static("public"));
 app.set("views", "./views");
 app.set("view engine", "ejs");
 
+  
 // PORT 
 const port=process.env.PORT || 3000;
 
@@ -35,16 +32,53 @@ db.once("open", function() {
   console.log('info',"Connection Successful!");
 });
 
-db.collection('custdata').findOne({},(err,res)=>{
-  console.log(res)
-})
-
+const result=[]
 
 app.get("/",(req,res)=>{
-  res.redirect('/index')
+  res.redirect('index')
 });
 
 // index Route
 app.get("/index",(req,res)=>{
-  res.render('index')
+ var mysort = { time: -1 };
+ db.collection("custdata").find({}).sort(mysort).toArray(function(err, result) {
+   if (err) throw err;
+  console.log(result)
+  res.render('index',{result:result})
+ });
+  
 });
+
+app.get('dis',(req,res)=>{
+  var mysort = { time: -1 };
+  db.collection("custdata").find({}).sort(mysort).toArray(function(err, result) {
+    if (err) throw err;
+
+   console.log(result)
+  });
+  res.write(result)
+})
+
+app.use(bodyParser.json()); 
+var urlencodedParser = bodyParser.urlencoded({ extended: true })
+
+app.post('/new_cust', urlencodedParser,function(req,res){
+  var name = req.body.name;
+  var email =req.body.email;
+  var pass = req.body.password;
+  var phone =req.body.phone;
+
+  var data = {
+      "name": name,
+      "email":email,
+      "password":pass,
+      "phone":phone
+  }
+db.collection('custdata').insertOne(data,function(err, collection){
+      if (err) throw err;
+      console.log("Record inserted Successfully");
+            
+  });
+        
+  return res.redirect('/index');
+})

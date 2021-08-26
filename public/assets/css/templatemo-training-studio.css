@@ -82,7 +82,7 @@ header, nav, section, article, aside, footer, hgroup {
 html, body {
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  background-color: #fff;
+  background-color: rgb(16, 160, 129);
   font-size: 16px;
   -ms-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
@@ -115,7 +115,7 @@ global styles
 */
 html,
 body {
-  background: #fff;
+  background-color: rgb(16, 160, 129);
   font-family: 'Poppins', sans-serif;
 }
 
@@ -239,7 +239,6 @@ header
   right: 0px;
   z-index: 100;
   height: 80px;
-  background: rgba(250,250,250,0.1);
   -webkit-transition: all .5s ease 0s;
   -moz-transition: all .5s ease 0s;
   -o-transition: all .5s ease 0s;
@@ -483,7 +482,7 @@ header
     opacity: 1;
   }
   .header-area {
-    background-color: #f7f7f7;
+    
     padding: 0px 15px;
     height: 80px;
     box-shadow: none;
@@ -605,9 +604,9 @@ banner
 #bg-video {
     min-width: 100%;
     min-height: 100vh;
-    max-width: 100%;
+    max-width: 40%;
     max-height: 100vh;
-    object-fit: cover;
+    object-fit: fill;
     z-index: -1;
 }
 
@@ -617,7 +616,7 @@ banner
 
 .video-overlay {
     position: absolute;
-    background-color: rgba(35,45,57,0.8);
+    background-color:     background-color: rgb(18 39 16 / 57%);
     top: 0;
     left: 0;
     bottom: 7px;
@@ -1215,7 +1214,7 @@ responsive
 @media (max-width: 992px) {
 
   .main-banner .caption h2 {
-    font-size: 64px;
+    font-size: 30px;
   }
   #features {
     margin-bottom: 110px;
@@ -1247,3 +1246,34 @@ responsive
     margin-left: 130px;
   }
 }
+
+
+
+#form-cust{
+  background-color: #3B566E;
+  border-top: 5px solid yellow;
+  margin-bottom: 50px;
+  padding-bottom: 20px;
+	-webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+    -webkit-transform-origin: 50% 0%;
+    transform-origin: 50% 0%;
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+    -webkit-transition: none;
+    transition: none;
+    -webkit-animation: expand 0.8s 0.6s ease-out forwards;
+    animation: expand 0.8s 0.6s ease-out forwards;
+ 
+}
+
+
+
+
+
+
+
+
+
+
